@@ -88,7 +88,7 @@ resource "aws_ecs_service" "service" {
   }
 
   capacity_provider_strategy {
-    capacity_provider = aws_ecs_capacity_provider.capacity_provider.id
+    capacity_provider = aws_ecs_capacity_provider.capacity_provider.name
     weight            = 100
   }
 
@@ -103,6 +103,4 @@ resource "aws_ecs_service" "service" {
   }
 
   tags = var.tags
-
-  depends_on = [aws_ecs_cluster_capacity_providers.cluster_capacity_provider]
 }
