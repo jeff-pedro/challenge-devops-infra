@@ -48,7 +48,7 @@ locals {
 }
 
 module "vpc" {
-  source = "../../infra/vpc"
+  source = "./infra/vpc"
 
   name        = local.app_name
   cidr        = local.vpc_cidr
@@ -62,7 +62,7 @@ module "vpc" {
 }
 
 module "ec2" {
-  source = "../../infra/ec2"
+  source = "./infra/ec2"
 
   name           = local.app_name
   key            = "ecs-prod"
@@ -81,7 +81,7 @@ module "ec2" {
 }
 
 module "ecs" {
-  source = "../../infra/ecs"
+  source = "./infra/ecs"
 
   name            = local.app_name
   image           = local.ecs_image
