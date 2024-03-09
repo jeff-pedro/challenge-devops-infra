@@ -22,8 +22,8 @@
 ---
 
 ## Tecnologies
-* Terraform to IaC
-* Github Actions
+- **Terraform** as IaC
+- **Github Actions** as CI/CD
 
 ## Architecture
 [image]
