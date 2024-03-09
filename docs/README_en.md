@@ -25,10 +25,10 @@
 * Terraform to IaC
 * Github Actions
 
-### Architecture
+## Architecture
 [image]
 
-### Aluraflix API
+## Aluraflix API
 - [challenge-devops-app](https://github.com/jeff-pedro/challenge-devops-app)
 
 ## Usage
