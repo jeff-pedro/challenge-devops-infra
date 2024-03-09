@@ -1,0 +1,30 @@
+name: Terraform Plan
+
+on:
+  pull_request:
+
+env:
+  TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+  TF_WORKSPACE: 'challenge-devops-aluraflix-prod'
+  CONFIG_DIRECTORY: './env/prod'
+
+jobs:
+  terraform:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload Configuration
+        uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.2.0
+        id: upload
+        with:
+          workspace: ${{ env.TF_WORKSPACE }}
+          directory: ${{ env.CONFIG_DIRECTORY }}
+          speculative: true
