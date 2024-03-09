@@ -3,7 +3,7 @@
 
   # Challenge DevOps: Infraestrutura
 
-  > Deploy uma infraestrutura em um aplicativo conteinerizado em nuvem.
+  > Implementa a infraestrutura de um aplicativo conteinerizado em nuvem.
   
   Este repositório armazena o código usado na construção da infraestrutura necessária para implantar a API Aluraflix usando **Terraform** para provisionar os recursos e **Github Actions** para automatizar o deploy.
 
@@ -21,17 +21,18 @@
 
 ---
 
-## Technologies
+## Tecnologias
 - **Terraform** como IaC
 - **Github Actions** no CI/CD
 
-### Arquitetura
+## Arquitetura
 [imagem]
 
-### Deploy da Aluraflix API
+## Aluraflix API
 - [challenge-devops-app](https://github.com/jeff-pedro/challenge-devops-app)
 
-### Usando
+## Usando
 [em breve]
+
 ---
 [Voltar ao topo da página](#top)
