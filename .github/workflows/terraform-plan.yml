@@ -7,7 +7,7 @@ env:
   TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
   TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
   TF_WORKSPACE: 'challenge-devops-aluraflix-prod'
-  CONFIG_DIRECTORY: './'
+  CONFIG_DIRECTORY: './env/prod'
 
 jobs:
   terraform:
@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: true
 
       - name: Upload Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.2.0
