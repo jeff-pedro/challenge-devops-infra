@@ -22,18 +22,18 @@ data "aws_ecr_repository" "repository" {
 locals {
   app_name = "aluraflix"
   # VPC
-  vpc_id   = module.vpc.vpc_id
-  vpc_cidr = "10.0.0.0/16"
-  vpc_subnets  = module.vpc.subnets
-  vpc_azs      = slice(data.aws_availability_zones.available.names, 0, 2)
-  
+  vpc_id      = module.vpc.vpc_id
+  vpc_cidr    = "10.0.0.0/16"
+  vpc_subnets = module.vpc.subnets
+  vpc_azs     = slice(data.aws_availability_zones.available.names, 0, 2)
+
   # Security Groups
   sg_allow_http = module.vpc.sg_allow_http_id
   sg_dafault    = module.vpc.sg_default_id
-  
+
   # Auto Scalling
-  asg_arn         = module.ec2.asg_arn
-  
+  asg_arn = module.ec2.asg_arn
+
   # Load Balancer
   lb_target_group = module.ec2.lb_target_group
 }

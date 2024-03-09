@@ -15,7 +15,7 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 resource "aws_ecs_capacity_provider" "capacity_provider" {
-  name = "capacity-provider-${var.name}"
+  name = var.capacity_name
 
   auto_scaling_group_provider {
     auto_scaling_group_arn = var.asg_arn
@@ -76,7 +76,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 }
 
 resource "aws_ecs_service" "service" {
-  name            = "service-${var.name}"
+  name            = var.service_name
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.ecs_task_definition.arn
   desired_count   = 2
