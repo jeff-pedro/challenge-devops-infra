@@ -19,6 +19,6 @@ variable "azs" {
 
 variable "qtd_subnets" {
   description = "Quantity of subnets used for VPC"
-  type = number
-  default = 1
+  type        = number
+  default     = 1
 }

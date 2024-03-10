@@ -4,7 +4,7 @@ output "vpc_id" {
 
 output "subnets" {
   description = "List of available subnets"
-  value = aws_subnet.subnet
+  value       = aws_subnet.subnet
 }
 
 output "sg_allow_http_id" {

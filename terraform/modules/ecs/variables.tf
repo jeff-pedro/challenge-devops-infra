@@ -21,11 +21,11 @@ variable "cluster_name" {
   type = string
 }
 
-variable "capacity_name" {
+variable "service_name" {
   type = string
 }
 
-variable "service_name" {
+variable "capacity_name" {
   type = string
 }
 
@@ -41,3 +41,6 @@ variable "subnets" {
   default = null
 }
 
+variable "execution_role" {
+  type = string
+}

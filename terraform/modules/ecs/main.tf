@@ -41,15 +41,13 @@ resource "aws_ecs_cluster_capacity_providers" "cluster_capacity_provider" {
     weight            = 100
     capacity_provider = aws_ecs_capacity_provider.capacity_provider.name
   }
-
-  depends_on = [aws_ecs_capacity_provider.capacity_provider]
 }
 
 resource "aws_ecs_task_definition" "ecs_task_definition" {
   family                   = var.name
   requires_compatibilities = ["EC2"]
   network_mode             = "bridge"
-  execution_role_arn       = "arn:aws:iam::590183733571:role/ecsTaskExecutionRole"
+  execution_role_arn       = var.execution_role
 
   container_definitions = jsonencode([
     {

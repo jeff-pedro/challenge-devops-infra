@@ -13,11 +13,17 @@ provider "aws" {
   region = var.region
 }
 
+
 data "aws_availability_zones" "available" {}
 
 data "aws_ecr_repository" "repository" {
   name = local.ecs_container_name
 }
+
+data "aws_iam_role" "roles" {
+  name = "ecsTaskExecutionRole"
+}
+
 
 locals {
   app_name = "aluraflix"
@@ -31,7 +37,7 @@ locals {
   sg_allow_http = module.vpc.sg_allow_http_id
   sg_dafault    = module.vpc.sg_default_id
 
-  # Auto Scalling
+  # Auto-scaling Group
   asg_arn = module.ec2.asg_arn
 
   # Load Balancer
@@ -40,15 +46,17 @@ locals {
 
 # Define ECS values
 locals {
-  ecs_cluster_name   = "cluster-${local.app_name}"
-  ecs_service_name   = "service-${local.app_name}"
-  ecs_capacity_name  = "capacity-provider-${local.app_name}"
-  ecs_container_name = "${local.app_name}-api"
-  ecs_image          = "${data.aws_ecr_repository.repository.repository_url}:${data.aws_ecr_repository.repository.most_recent_image_tags[0]}"
+  ecs_cluster_name     = "cluster-${local.app_name}"
+  ecs_service_name     = "service-${local.app_name}"
+  ecs_capacity_name    = "capacity-provider-${local.app_name}"
+  ecs_container_name   = "${local.app_name}-api"
+  ecs_image_repository = data.aws_ecr_repository.repository.repository_url
+  ecs_image_version    = data.aws_ecr_repository.repository.most_recent_image_tags[0]
+  ecs_image            = "${local.ecs_image_repository}:${local.ecs_image_version}"
 }
 
 module "vpc" {
-  source = "./infra/vpc"
+  source = "./modules/vpc"
 
   name        = local.app_name
   cidr        = local.vpc_cidr
@@ -62,7 +70,7 @@ module "vpc" {
 }
 
 module "ec2" {
-  source = "./infra/ec2"
+  source = "./modules/ec2"
 
   name           = local.app_name
   key            = "ecs-prod"
@@ -81,7 +89,7 @@ module "ec2" {
 }
 
 module "ecs" {
-  source = "./infra/ecs"
+  source = "./modules/ecs"
 
   name            = local.app_name
   image           = local.ecs_image
@@ -92,6 +100,7 @@ module "ecs" {
   asg_arn         = local.asg_arn
   lb_target_group = local.lb_target_group
   subnets         = local.vpc_subnets
+  execution_role  = data.aws_iam_role.roles.arn
 
   tags = {
     Terraform   = "true"
