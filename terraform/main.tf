@@ -107,3 +107,7 @@ module "ecs" {
     Environment = "prod"
   }
 }
+
+output "web-address" {
+  value = "http://${module.ec2.loadbalancer_dns}"
+}
