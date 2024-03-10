@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "ecs_asg" {
     version = "$Latest"
   }
 
-  vpc_zone_identifier = [var.subnets[0].id, var.subnets[1].id]
+  vpc_zone_identifier = [for subnet in var.subnets : subnet.id]
 
   tag {
     key                 = "AmazonECSManaged"
@@ -73,7 +73,8 @@ resource "aws_lb" "ecs_alb" {
   load_balancer_type = "application"
 
   security_groups = [var.sg_allow_http, var.sg_default]
-  subnets         = [var.subnets[0].id, var.subnets[1].id]
+  subnets         = [for subnet in var.subnets : subnet.id]
+
 
   enable_deletion_protection = false
 
