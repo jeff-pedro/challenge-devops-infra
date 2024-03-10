@@ -37,7 +37,7 @@ jobs:
           configuration_version: ${{ steps.upload.outputs.configuration_version_id }}
           plan_only: true
 
-      - run: "${{ fromJSON(steps.plan-run.outputs.payload) }}"
+      - run: "${{ steps.plan-run.outputs.payload }}"
       
       - name: Get Plan Output
         uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.2.0
