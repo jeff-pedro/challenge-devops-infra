@@ -15,7 +15,7 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 resource "aws_ecs_capacity_provider" "capacity_provider" {
-  name = "capacity-provider-${var.name}"
+  name = var.capacity_name
 
   auto_scaling_group_provider {
     auto_scaling_group_arn = var.asg_arn
@@ -41,15 +41,13 @@ resource "aws_ecs_cluster_capacity_providers" "cluster_capacity_provider" {
     weight            = 100
     capacity_provider = aws_ecs_capacity_provider.capacity_provider.name
   }
-
-  depends_on = [aws_ecs_capacity_provider.capacity_provider]
 }
 
 resource "aws_ecs_task_definition" "ecs_task_definition" {
   family                   = var.name
   requires_compatibilities = ["EC2"]
   network_mode             = "bridge"
-  execution_role_arn       = "arn:aws:iam::590183733571:role/ecsTaskExecutionRole"
+  execution_role_arn       = var.execution_role
 
   container_definitions = jsonencode([
     {
@@ -76,7 +74,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 }
 
 resource "aws_ecs_service" "service" {
-  name            = "service-${var.name}"
+  name            = var.service_name
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.ecs_task_definition.arn
   desired_count   = 2
@@ -88,7 +86,7 @@ resource "aws_ecs_service" "service" {
   }
 
   capacity_provider_strategy {
-    capacity_provider = aws_ecs_capacity_provider.capacity_provider.id
+    capacity_provider = aws_ecs_capacity_provider.capacity_provider.name
     weight            = 100
   }
 
@@ -103,6 +101,4 @@ resource "aws_ecs_service" "service" {
   }
 
   tags = var.tags
-
-  depends_on = [aws_ecs_cluster_capacity_providers.cluster_capacity_provider]
 }

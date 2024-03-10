@@ -13,25 +13,35 @@ provider "aws" {
   region = var.region
 }
 
+
 data "aws_availability_zones" "available" {}
 
 data "aws_ecr_repository" "repository" {
   name = local.ecs_container_name
 }
 
+data "aws_iam_role" "roles" {
+  name = "ecsTaskExecutionRole"
+}
+
+
 locals {
   app_name = "aluraflix"
+
   # VPC
   vpc_id      = module.vpc.vpc_id
   vpc_cidr    = "10.0.0.0/16"
   vpc_subnets = module.vpc.subnets
   vpc_azs     = slice(data.aws_availability_zones.available.names, 0, 2)
+
   # Security Groups
   sg_allow_http = module.vpc.sg_allow_http_id
   sg_dafault    = module.vpc.sg_default_id
+
   # Auto-scaling Group
   asg_arn = module.ec2.asg_arn
-  # 
+
+  # Load Balancer
   lb_target_group = module.ec2.lb_target_group
 }
 
@@ -86,9 +96,12 @@ module "ecs" {
   image           = local.ecs_image
   container_name  = local.ecs_container_name
   cluster_name    = local.ecs_cluster_name
+  service_name    = local.ecs_service_name
+  capacity_name   = local.ecs_capacity_name
   asg_arn         = local.asg_arn
   lb_target_group = local.lb_target_group
   subnets         = local.vpc_subnets
+  execution_role  = data.aws_iam_role.roles.arn
 
   tags = {
     Terraform   = "true"

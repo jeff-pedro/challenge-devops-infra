@@ -17,6 +17,17 @@ variable "container_name" {
   type = string
 }
 
+variable "cluster_name" {
+  type = string
+}
+
+variable "service_name" {
+  type = string
+}
+
+variable "capacity_name" {
+  type = string
+}
 
 variable "asg_arn" {
   type = string
@@ -30,6 +41,6 @@ variable "subnets" {
   default = null
 }
 
-variable "cluster_name" {
+variable "execution_role" {
   type = string
 }
