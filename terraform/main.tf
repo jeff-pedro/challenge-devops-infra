@@ -15,29 +15,35 @@ provider "aws" {
 
 data "aws_availability_zones" "available" {}
 
+data "aws_ecr_repository" "repository" {
+  name = local.ecs_container_name
+}
+
 locals {
   app_name = "aluraflix"
   # VPC
   vpc_id      = module.vpc.vpc_id
   vpc_cidr    = "10.0.0.0/16"
   vpc_subnets = module.vpc.subnets
-  azs         = slice(data.aws_availability_zones.available.names, 0, 2)
+  vpc_azs     = slice(data.aws_availability_zones.available.names, 0, 2)
   # Security Groups
   sg_allow_http = module.vpc.sg_allow_http_id
   sg_dafault    = module.vpc.sg_default_id
   # Auto-scaling Group
   asg_arn = module.ec2.asg_arn
-  #
+  # 
   lb_target_group = module.ec2.lb_target_group
 }
 
 # Define ECS values
 locals {
   ecs_cluster_name     = "cluster-${local.app_name}"
-  ecs_image_name       = "aluraflix-api"
-  ecs_image_version    = "latest"
-  ecs_image_repository = "590183733571.dkr.ecr.us-east-2.amazonaws.com"
-  ecs_image            = "${local.ecs_image_repository}/${local.ecs_image_name}:${local.ecs_image_version}"
+  ecs_service_name     = "service-${local.app_name}"
+  ecs_capacity_name    = "capacity-provider-${local.app_name}"
+  ecs_container_name   = "${local.app_name}-api"
+  ecs_image_repository = data.aws_ecr_repository.repository.repository_url
+  ecs_image_version    = data.aws_ecr_repository.repository.most_recent_image_tags[0]
+  ecs_image            = "${local.ecs_image_repository}:${local.ecs_image_version}"
 }
 
 module "vpc" {
@@ -45,7 +51,7 @@ module "vpc" {
 
   name        = local.app_name
   cidr        = local.vpc_cidr
-  azs         = local.azs
+  azs         = local.vpc_azs
   qtd_subnets = 2
 
   tags = {
@@ -78,11 +84,11 @@ module "ecs" {
 
   name            = local.app_name
   image           = local.ecs_image
-  container_name  = local.ecs_image_name
+  container_name  = local.ecs_container_name
   cluster_name    = local.ecs_cluster_name
   asg_arn         = local.asg_arn
   lb_target_group = local.lb_target_group
-  subnets         = local.subnets
+  subnets         = local.vpc_subnets
 
   tags = {
     Terraform   = "true"
