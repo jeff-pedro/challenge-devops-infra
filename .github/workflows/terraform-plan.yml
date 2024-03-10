@@ -37,7 +37,6 @@ jobs:
           configuration_version: ${{ steps.upload.outputs.configuration_version_id }}
           plan_only: true
 
-      - run: "${{ fromJSON(steps.plan-run.outputs.payload).data.relationships.plan.data.id }}"
       - run: "${{ fromJSON(steps.plan-run.outputs.payload) }}"
       
       - name: Get Plan Output
