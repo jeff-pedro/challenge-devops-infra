@@ -8,7 +8,7 @@
   This repository stores the code used to build the infrastructure needed to deploy the Aluraflix API using **Terraform** to provision resources and **Github Actions** to automate deployment.
 
   <a>English</a> -
-  <a href="./README.md">Portuguese</a>
+  <a href="./README_pt-br.md">Portuguese</a>
 
 </div>
 
