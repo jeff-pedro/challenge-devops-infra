@@ -16,7 +16,7 @@ This repository stores the code used to build the infrastructure needed to deplo
 <div align="center" >
 
 ![GitHub Actions Plan](https://img.shields.io/github/actions/workflow/status/jeff-pedro/challenge-devops-infra/terraform-plan.yml?event=pull_request&style=flat-square&logo=github-actions&label=plan)
-![GitHub Actions Apply](https://img.shields.io/github/actions/workflow/status/jeff-pedro/challenge-devops-infra/terraform-apply.yml?branch=main&event=pull_request&style=flat-square&logo=github-actions&label=plan)
+![GitHub Actions Apply](https://img.shields.io/github/actions/workflow/status/jeff-pedro/challenge-devops-infra/terraform-apply.yml?branch=main&event=pull_request&style=flat-square&logo=github-actions&label=apply)
 ![Terraform Version](https://img.shields.io/badge/terraform-v1.7.1-blueviolet?logo=terraform)
 ![Release](https://img.shields.io/github/v/release/jeff-pedro/challenge-devops-infra?display_name=tag&include_prereleases&style=flat-square)
 
