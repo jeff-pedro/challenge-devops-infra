@@ -37,7 +37,7 @@
 - **Security Groups** no controle de acesso a nível de serviço
 
 <div align="center" >
-  <img src="/docs/img/vpc.svg"  alt="imagem da arquitetura da vpc" width="400" align="center"/>
+  <img src="/docs/img/vpc.svg"  alt="imagem da arquitetura da vpc" align="center"/>
 </div>
 
 ### Computação
@@ -46,7 +46,7 @@
 - **Load Balancer** como interface que irá direcionar as requisições a um grupo alvo (target group)
 
 <div align="center" >
-  <img src="/docs/img/ec2.svg"  alt="imagem da arquitetura da ec2" width="400" align="center"/>
+  <img src="/docs/img/ec2.svg"  alt="imagem da arquitetura da ec2" align="center"/>
 </div>
 
 ### Amazon ECS
@@ -55,12 +55,12 @@
 - **Tasks** é onde está configurado o container da aplicação que será executada
 
 <div align="center" >
-  <img src="/docs/img/ecs.svg"  alt="imagem da arquitetura da ecs" width="400" align="center"/>
+  <img src="/docs/img/ecs.svg"  alt="imagem da arquitetura da ecs" align="center"/>
 </div>
 
 ### Arquitetura completa
 <div align="center" >
-  <img src="/docs/img/architecture.svg"  alt="arquitetura da infraestrutura" width="400" align="center"/>
+  <img src="/docs/img/architecture.svg"  alt="arquitetura da infraestrutura" align="center"/>
 </div>
 
 
