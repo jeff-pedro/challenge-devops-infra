@@ -66,7 +66,7 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 ### Arquitetura completa
 
 <div align="center" >
-  <img src="/docs/img/architecture.svg"  alt="arquitetura da infraestrutura" align="center"/>
+  <img src="/docs/img/architecture-v1.svg"  alt="arquitetura da infraestrutura" align="center"/>
 </div>
 
 ## Aluraflix API
@@ -93,7 +93,7 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 - **AWS_SECRET_ACCESS_KEY**: IAM Secret Access Key Id da conta da AWS (sensitive)
 
 <div align="center" >
-  <img src="/docs/img/terraform-v1.jpg" width="600" align="center"/>
+  <img src="/docs/img/terraform.jpg" width="600" align="center"/>
 </div>
 
 4. Como todo o processo é realizado via CI, para realizar o deploy da infraestrutura é necessário realizar um **Pull Request** de alguma altereção e realizar o Merge
