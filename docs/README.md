@@ -78,7 +78,7 @@
 - **TF_WORKSPACE**: name of the workspace in [Terraform Cloud](https://app.terraform.io/app) where the implementation of resources will be executed.
 
 <div align="center" >
-  <img src="/docs/img/github.svg" width="400" align="center"/>
+  <img src="/docs/img/github.jpg" width="400" align="center"/>
 </div>
 
 3. Configure environment variables in [Terraform Cloud](https://app.terraform.io/app):
@@ -86,7 +86,7 @@
 - **AWS_SECRET_ACCESS_KEY**: AWS account IAM secret access key ID (sensitive)
 
 <div align="center" >
-  <img src="/docs/img/terraform.svg" width="400" align="center"/>
+  <img src="/docs/img/terraform.jpg" width="400" align="center"/>
 </div>
 
 4. As the entire process is carried out via CI, to implement the infrastructure it is necessary to make a **Pull Request** of any change and perform the Merge
