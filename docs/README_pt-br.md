@@ -78,7 +78,7 @@
 - **TF_WORKSPACE**: nome da workspace no [Terraform Cloud](https://app.terraform.io/app) onde será executado a implemtação dos recursos
 
 <div align="center" >
-  <img src="/docs/img/github.jpg" width="400" align="center"/>
+  <img src="/docs/img/github.jpg" width="600" align="center"/>
 </div>
 
 3. Configurar variáveis de ambiente (env) no [Terraform Cloud](https://app.terraform.io/app):
@@ -86,7 +86,7 @@
 - **AWS_SECRET_ACCESS_KEY**: IAM Secret Access Key Id da conta da AWS (sensitive)
 
 <div align="center" >
-  <img src="/docs/img/terraform.jpg" width="400" align="center"/>
+  <img src="/docs/img/terraform.jpg" width="600" align="center"/>
 </div>
 
 4. Como todo o processo é realizado via CI, para realizar o deploy da infraestrutura é necessário realizar um **Pull Request** de alguma altereção e realizar o Merge
