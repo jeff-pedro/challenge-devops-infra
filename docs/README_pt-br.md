@@ -28,13 +28,13 @@
 - **Github Actions** no CI/CD
 
 
-## O que será contruído...
-### Rede
-- **VPC** como rede virtual dedicada a aplicação
-- **Subnets** em Zonas de Disponibilidades distintas
-- **Internet Gateway** para acesso a internet  
-- **Route Tables** mapeando tráfego das rotas da rede
-- **Security Groups** no controle de acesso a nível de serviço
+## What will be built...
+### Network
+- **VPC** as a virtual network dedicated to the application
+- **Subnets** across different availability zones
+- **Internet Gateway** for Internet access
+- **Route Tables** mapping network route traffic
+- **Security groups** in service level access control
 
 <div align="center" >
   <img src="/docs/img/vpc.svg"  alt="imagem da arquitetura da vpc" align="center"/>
@@ -51,7 +51,7 @@
 
 ### Amazon ECS
 - **Cluster** agrupando a infraestrutura (auto-scaling), serviços entre outras configurações 
-- **Service** gerenciando 
+- **Service** gerenciando as tarefas
 - **Tasks** é onde está configurado o container da aplicação que será executada
 
 <div align="center" >
