@@ -66,7 +66,7 @@ This repository stores the code used to build the infrastructure needed to deplo
 ### Full architecture
 
 <div align="center" >
-  <img src="/docs/img/architecture.svg"  alt="arquitetura da infraestrutura" align="center"/>
+  <img src="/docs/img/architecture-v1.svg"  alt="arquitetura da infraestrutura" align="center"/>
 </div>
 
 ## Aluraflix API
@@ -93,7 +93,7 @@ This repository stores the code used to build the infrastructure needed to deplo
 - **AWS_SECRET_ACCESS_KEY**: AWS account IAM secret access key ID (sensitive)
 
 <div align="center" >
-  <img src="/docs/img/terraform-v2.jpg" width="600" align="center"/>
+  <img src="/docs/img/terraform.jpg" width="600" align="center"/>
 </div>
 
 4. As the entire process is carried out via CI, to implement the infrastructure it is necessary to make a **Pull Request** of any change and perform the Merge
