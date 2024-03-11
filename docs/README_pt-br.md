@@ -26,18 +26,18 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 
 ## Tecnologias
 
-- **Terraform** como IaC
-- **Github Actions** no CI/CD
+- **Terraform** como IaC.
+- **Github Actions** no CI/CD.
 
 ## What will be built...
 
 ### Network
 
-- **VPC** as a virtual network dedicated to the application
-- **Subnets** across different availability zones
-- **Internet Gateway** for Internet access
-- **Route Tables** mapping network route traffic
-- **Security groups** in service level access control
+- **VPC** as a virtual network dedicated to the application.
+- **Subnets** across different availability zones.
+- **Internet Gateway** for Internet access.
+- **Route Tables** mapping network route traffic.
+- **Security groups** in service level access control.
 
 <div align="center" >
   <img src="/docs/img/vpc.svg"  alt="imagem da arquitetura da vpc" align="center"/>
@@ -45,9 +45,9 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 
 ### Computação
 
-- **Instâncias EC2** geradas via **Launch Template**
-- **Auto-scaling Group** para gerenciar a escalabilidade dos servidores
-- **Load Balancer** como interface que irá direcionar as requisições a um grupo alvo (target group)
+- **Instâncias EC2** geradas via **Launch Template**.
+- **Auto-scaling Group** para gerenciar a escalabilidade dos servidores.
+- **Load Balancer** como interface que irá direcionar as requisições a um grupo alvo (target group).
 
 <div align="center" >
   <img src="/docs/img/ec2.svg"  alt="imagem da arquitetura da ec2" align="center"/>
@@ -55,9 +55,9 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 
 ### Amazon ECS
 
-- **Cluster** agrupando a infraestrutura (auto-scaling), serviços entre outras configurações
-- **Service** gerenciando as tarefas
-- **Tasks** é onde está configurado o container da aplicação que será executada
+- **Cluster** agrupando a infraestrutura (auto-scaling), serviços entre outras configurações.
+- **Service** gerenciando as tarefas.
+- **Tasks** é onde está configurado o container da aplicação que será executada.
 
 <div align="center" >
   <img src="/docs/img/ecs.svg"  alt="imagem da arquitetura da ecs" align="center"/>
@@ -75,13 +75,13 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 
 ## Usando o repositório
 
-1. Clonar o repositório
+1. Clonar o repositório.
 
 2. Configurar as [secrets](https://docs.github.com/pt/actions/security-guides/using-secrets-in-github-actions) e variáveis de ambiente no Github:
 
-- **TF_CLOUD_ORGANIZATION**: organização que o projeto está criado no [Terraform Cloud](https://app.terraform.io/app)
-- **TF_API_TOKEN**: token gerado no [Terraform Cloud](https://app.terraform.io/app)
-- **TF_WORKSPACE**: nome da workspace no [Terraform Cloud](https://app.terraform.io/app) onde será executado a implemtação dos recursos
+- **TF_CLOUD_ORGANIZATION**: organização que o projeto está criado no [Terraform Cloud](https://app.terraform.io/app).
+- **TF_API_TOKEN**: token gerado no [Terraform Cloud](https://app.terraform.io/app).
+- **TF_WORKSPACE**: nome da workspace no [Terraform Cloud](https://app.terraform.io/app) onde será executado a implemtação dos recursos.
 
 <div align="center" >
   <img src="/docs/img/github.jpg" width="600" align="center"/>
@@ -89,16 +89,17 @@ Este repositório armazena o código usado na construção da infraestrutura nec
 
 3. Configurar variáveis de ambiente (env) no [Terraform Cloud](https://app.terraform.io/app):
 
-- **AWS_ACCESS_KEY_ID**: IAM Access Key Id da conta da AWS
-- **AWS_SECRET_ACCESS_KEY**: IAM Secret Access Key Id da conta da AWS (sensitive)
+- **AWS_ACCESS_KEY_ID**: IAM Access Key Id da conta da AWS.
+- **AWS_SECRET_ACCESS_KEY**: IAM Secret Access Key Id da conta da AWS (sensitive).
 
 <div align="center" >
   <img src="/docs/img/terraform.jpg" width="600" align="center"/>
 </div>
 
-4. Como todo o processo é realizado via CI, para realizar o deploy da infraestrutura é necessário realizar um **Pull Request** de alguma altereção e realizar o Merge
+4. Como todo o processo é realizado via CI, para realizar o deploy da infraestrutura é necessário realizar um **Pull Request** de alguma altereção e realizar o Merge.
 
-5. Outra forma é acessar diretamente no Github Actions e executar o workflow no painel
+5. Outra forma é acessar diretamente no Github Actions e executar o workflow no painel.
+
 
 ---
 

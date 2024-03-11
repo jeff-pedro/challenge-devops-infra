@@ -26,18 +26,18 @@ This repository stores the code used to build the infrastructure needed to deplo
 
 ## Tecnologies
 
-- **Terraform** as IaC
-- **Github Actions** as CI/CD
+- **Terraform** as IaC.
+- **Github Actions** as CI/CD.
 
 ## What will be built...
 
 ### Network
 
-- **VPC** as a virtual network dedicated to the application
-- **Subnets** across different availability zones
-- **Internet Gateway** for Internet access
-- **Route Tables** mapping network route traffic
-- **Security groups** in service level access control
+- **VPC** as a virtual network dedicated to the application.
+- **Subnets** across different availability zones.
+- **Internet Gateway** for Internet access.
+- **Route Tables** mapping network route traffic.
+- **Security groups** in service level access control.
 
 <div align="center" >
   <img src="/docs/img/vpc.svg"  alt="imagem da arquitetura da vpc" align="center"/>
@@ -45,9 +45,9 @@ This repository stores the code used to build the infrastructure needed to deplo
 
 ### Computing
 
-- **EC2 instances** generated via **Launch Template**
-- **Autoscaling group** to manage server scalability
-- **Load Balancer** as an interface that will redirect requests to a target group
+- **EC2 instances** generated via **Launch Template**.
+- **Autoscaling group** to manage server scalability.
+- **Load Balancer** as an interface that will redirect requests to a target group.
 
 <div align="center" >
   <img src="/docs/img/ec2.svg"  alt="imagem da arquitetura da ec2" align="center"/>
@@ -55,9 +55,9 @@ This repository stores the code used to build the infrastructure needed to deplo
 
 ### Amazon ECS
 
-- **Cluster** grouping infrastructure (autoscaling), services and other sharing configurations
-- **Service** willl be manage the tasks
-- **Tasks** is where the container of the application that will be run
+- **Cluster** grouping infrastructure (autoscaling), services and other sharing configurations.
+- **Service** willl be manage the tasks.
+- **Tasks** is where the container of the application that will be run.
 
 <div align="center" >
   <img src="/docs/img/ecs.svg"  alt="imagem da arquitetura da ecs" align="center"/>
@@ -75,7 +75,7 @@ This repository stores the code used to build the infrastructure needed to deplo
 
 ## Using the repository
 
-1. Clone the repository
+1. Clone the repository.
 
 2. Configure the [secrets](https://docs.github.com/pt/actions/security-guides/using-secrets-in-github-actions) and environment variables on Github:
 
@@ -89,16 +89,17 @@ This repository stores the code used to build the infrastructure needed to deplo
 
 3. Configure environment variables in [Terraform Cloud](https://app.terraform.io/app):
 
-- **AWS_ACCESS_KEY_ID**: AWS account IAM access key ID
-- **AWS_SECRET_ACCESS_KEY**: AWS account IAM secret access key ID (sensitive)
+- **AWS_ACCESS_KEY_ID**: IAM AWS access key ID.
+- **AWS_SECRET_ACCESS_KEY**: IAM AWS secret access key ID (sensitive).
 
 <div align="center" >
   <img src="/docs/img/terraform.jpg" width="600" align="center"/>
 </div>
 
-4. As the entire process is carried out via CI, to implement the infrastructure it is necessary to make a **Pull Request** of any change and perform the Merge
+4. As the entire process is carried out via CI, to implement the infrastructure it is necessary to make a **Pull Request** of any change and perform the Merge.
 
-5. Another way is to directly access Github Actions and run the workflow in the dashboard
+5. Another way is to directly access Github Actions and run the workflow in the dashboard.
+
 
 ---
 
